@@ -26,16 +26,11 @@ function confirm_db_connect(){
 }
 
 function confirm_result_set($result_set){
-    if(!result_set){
+    if(!$result_set){
         exit("Database query failed.");
     }
 }
 
-function confirm_result_set_success($result_set){
-    if(result_set){
-        exit("Database query successful.");
-    }
-}
 
 function db_escape($connection, $string){
     return mysqli_real_escape_string($connection, $string);
