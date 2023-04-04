@@ -10,13 +10,13 @@ $signature[] = array();
 $misc[] = array();
 
 foreach ($comments as $c){
-    if (str_contains(implode($c), 'candy')){
+    if (str_contains(strtolower(implode($c)), 'candy')){
         array_push($candy, $c);
-    }elseif (str_contains(implode($c), 'call me')){
+    }elseif (str_contains(strtolower(implode($c)), 'call me')){
         array_push($call, $c);
-    }elseif (str_contains(implode($c), 'referred')){
+    }elseif (str_contains(strtolower(implode($c)), 'referred')){
         array_push($referred, $c);
-    }elseif (str_contains(implode($c), 'signature')){
+    }elseif (str_contains(strtolower(implode($c)), 'signature')){
         array_push($signature, $c);
     }else {
         array_push($misc, $c);
@@ -28,11 +28,7 @@ foreach ($comments as $c){
 <!DOCTYPE html>
 
 <html lang="en">
-    <?php  print_r($candy);
-    print_r($call);
-    print_r($referred);
-    print_r($signature);
-    print_r($misc); ?>
+    
     <head>
         <meta charset="utf-8">
         <title>Sweetwater Code Test</title>
@@ -60,7 +56,7 @@ foreach ($comments as $c){
         <table>
         <tbody>
             <tr>
-                <th>Comments About Who Referred Me</th>
+                <th>Comments About Call Me/Don't Call Me</th>
             </tr>
             <?php foreach($call as $c): ?> 
             <tr>
@@ -70,13 +66,39 @@ foreach ($comments as $c){
             <?php endforeach; ?>
 
             <table>
-        <tbody>
+            <tbody>
             <tr>
-                <th>Comments About Call Me/Don't Call Me</th>
+                <th>Comments About Who Referred Me</th>
             </tr>
-            <?php foreach($call as $c): ?> 
+            <?php foreach($referred as $r): ?> 
             <tr>
-                <td><?php echo implode($c); ?> </td>
+                <td><?php echo implode($r); ?> </td>
+            </tr>
+            </tbody>
+            <?php endforeach; ?>
+        </table>
+
+        <table>
+            <tbody>
+            <tr>
+                <th>Comments About Signature Requirements Upon Delivery</th>
+            </tr>
+            <?php foreach($signature as $s): ?> 
+            <tr>
+                <td><?php echo implode($s); ?> </td>
+            </tr>
+            </tbody>
+            <?php endforeach; ?>
+        </table>
+
+        <table>
+            <tbody>
+            <tr>
+                <th>Miscellaneous Comments</th>
+            </tr>
+            <?php foreach($misc as $m): ?> 
+            <tr>
+                <td><?php echo implode($m); ?> </td>
             </tr>
             </tbody>
             <?php endforeach; ?>
