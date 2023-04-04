@@ -1,0 +1,3 @@
+UPDATE `sweetwater_test`
+SET shipdate_expected = (SELECT STR_TO_DATE((SUBSTRING(comments, instr(comments,':')+1)), '%m/%d/%y'))
+WHERE orderid IN (SELECT `orderid` FROM `sweetwater_test` WHERE `comments`LIKE '%Expected Ship Date%');
